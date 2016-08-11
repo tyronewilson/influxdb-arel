@@ -35,7 +35,7 @@ At start you should create a builder:
 
 ```ruby
 builder = Influxdb::Arel::Builder.new(:events)
-builder.to_sql
+builder.select.to_sql
 # => SELECT * FROM events
 ```
 
