@@ -2,10 +2,7 @@
 
 InfluxDB::Arel is a SQL AST manager for InfluxDB dialect. It simplifies the generation of complex SQL queries.
 
-[![Build Status](https://travis-ci.org/undr/influxdb-arel.svg?branch=master)](https://travis-ci.org/undr/influxdb-arel)
-[![Code Climate](https://codeclimate.com/github/undr/influxdb-arel/badges/gpa.svg)](https://codeclimate.com/github/undr/influxdb-arel)
-[![Gem Version](https://badge.fury.io/rb/influxdb-arel.svg)](http://badge.fury.io/rb/influxdb-arel)
-[![Test Coverage](https://codeclimate.com/github/undr/influxdb-arel/badges/coverage.svg)](https://codeclimate.com/github/undr/influxdb-arel)
+[![Build Status](https://travis-ci.org/undr/influxdb-arel.svg?branch=master)](https://travis-ci.org/undr/influxdb-arel) [![Code Climate](https://codeclimate.com/github/undr/influxdb-arel/badges/gpa.svg)](https://codeclimate.com/github/undr/influxdb-arel) [![Gem Version](https://badge.fury.io/rb/influxdb-arel.svg)](http://badge.fury.io/rb/influxdb-arel) [![Test Coverage](https://codeclimate.com/github/undr/influxdb-arel/badges/coverage.svg)](https://codeclimate.com/github/undr/influxdb-arel)
 
 ## Installation
 
@@ -49,7 +46,7 @@ InfluxDB::Arel::Builder.new('events') == InfluxDB::Arel::Builder.new(:events)
 If you want to use convenient shortcuts, such as `10.h.ago` or `1.w` you should require a file with core extensions
 
 ```ruby
-require 'influxdb/arel/core_extensions'
+require 'influx_db/arel/core_extensions'
 
 1.h
 # => #<InfluxDB::Arel::Nodes::Duration:0x00000102143a68 @left=1, @right="h">
@@ -66,22 +63,21 @@ require 'influxdb/arel/core_extensions'
 
 A builder has methods for SQL construction.
 
-* Specifying which attributes should be used in the query: `select`.
+- Specifying which attributes should be used in the query: `select`.
 
-* Specifying which tables and how they should be used in the query: `from`, `merge` and `join`.
+- Specifying which tables and how they should be used in the query: `from`, `merge` and `join`.
 
-* Conditions of query: `where`.
+- Conditions of query: `where`.
 
-* Grouping methods: `group` and `fill`.
+- Grouping methods: `group` and `fill`.
 
-* Ordering methods: `order`, `asc`, `desc` and `invert_order`.
+- Ordering methods: `order`, `asc`, `desc` and `invert_order`.
 
-* Specifying limitations of result set: `limit`.
+- Specifying limitations of result set: `limit`.
 
-* The part of continuous queries: `into`.
+- The part of continuous queries: `into`.
 
-Most of them accept a block for building part of SQL. Inside a block calling of method will be interpreted depending on current context.
-For example:
+Most of them accept a block for building part of SQL. Inside a block calling of method will be interpreted depending on current context. For example:
 
 #### In `SELECT`, `WHERE`and `GROUP` contexts:
 
@@ -106,7 +102,6 @@ builder.where{ pp a(:name) == name }
 - Method `time` returns `InfluxDB::Arel::Nodes::Time` object. (It will be available only in `GROUP` context)
 
 - Method `now` returns `InfluxDB::Arel::Nodes::Now` object. (It will be available only in `WHERE` context)
-
 
 #### In `FROM`, `JOIN` and `MERGE` contexts
 
@@ -216,7 +211,7 @@ builder.from(/.*/).to_sql
 # => SELECT * FROM /.*/
 ```
 
-**Warning:** *You can call method with more then one regexp but only first will be used as table name*
+**Warning:** _You can call method with more then one regexp but only first will be used as table name_
 
 ```ruby
 builder.from(/.*/, /logs\..*/).to_sql
@@ -360,10 +355,10 @@ Yo can set the ordering of results using `order` method
 
 Possible values:
 
-* `:asc`- Default value. Results will be sorted by ascending order.
-* `'asc'`- Results will be sorted by ascending order.
-* `:desc`- Results will be sorted by descending order.
-* `'desc'`- Results will be sorted by descending order.
+- `:asc`- Default value. Results will be sorted by ascending order.
+- `'asc'`- Results will be sorted by ascending order.
+- `:desc`- Results will be sorted by descending order.
+- `'desc'`- Results will be sorted by descending order.
 
 ```ruby
 builder = InfluxDB::Arel::Builder.new(:table)
@@ -437,7 +432,7 @@ builder.limit(100).to_sql
 
 ## Contributing
 
-1. Fork it ( https://github.com/undr/influxdb-arel/fork )
+1. Fork it ( <https://github.com/undr/influxdb-arel/fork> )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
