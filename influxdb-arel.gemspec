@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'influxdb/arel/version'
+require 'influx_db/arel/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "influxdb-arel"
-  spec.version       = Influxdb::Arel::VERSION
+  spec.name          = "influx_db-arel"
+  spec.version       = InfluxDB::Arel::VERSION
   spec.authors       = ["undr"]
   spec.email         = ["undr@yandex.ru"]
-  spec.summary       = %q{Influxdb SQL AST manager.}
-  spec.description   = %q{Influxdb::Arel is a SQL AST manager for Influxdb dialect.}
-  spec.homepage      = "https://github.com/undr/influxdb-arel"
+  spec.summary       = %q{InfluxDB SQL AST manager.}
+  spec.description   = %q{InfluxDB::Arel is a SQL AST manager for InfluxDB dialect.}
+  spec.homepage      = "https://github.com/undr/influx_db-arel"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

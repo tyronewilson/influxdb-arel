@@ -1,5 +1,5 @@
 require 'spec_helper'
-require './lib/influxdb/arel/core_extensions'
+require './lib/influx_db/arel/core_extensions'
 
 describe Integer do
   describe '#u' do

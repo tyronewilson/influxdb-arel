@@ -1,6 +1,0 @@
-require 'influxdb/arel/extensions/expressions'
-require 'influxdb/arel/extensions/boolean_predications'
-require 'influxdb/arel/extensions/alias_predication'
-require 'influxdb/arel/extensions/joining_merging'
-require 'influxdb/arel/extensions/predications'
-require 'influxdb/arel/extensions/math'

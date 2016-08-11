@@ -1,21 +1,21 @@
 require 'date'
 require 'time'
-require "influxdb/arel/version"
-require 'influxdb/arel/core_extensions'
-require 'influxdb/arel/extensions'
-require 'influxdb/arel/clauses'
-require 'influxdb/arel/builder'
+require "influx_db/arel/version"
+require 'influx_db/arel/core_extensions'
+require 'influx_db/arel/extensions'
+require 'influx_db/arel/clauses'
+require 'influx_db/arel/builder'
 
-require 'influxdb/arel/visitor'
-require 'influxdb/arel/visitor/where_statement'
-require 'influxdb/arel/visitor/select_statement'
-require 'influxdb/arel/visitor/delete_statement'
+require 'influx_db/arel/visitor'
+require 'influx_db/arel/visitor/where_statement'
+require 'influx_db/arel/visitor/select_statement'
+require 'influx_db/arel/visitor/delete_statement'
 
-require 'influxdb/arel/tree_manager'
-require 'influxdb/arel/select_manager'
-require 'influxdb/arel/delete_manager'
-require 'influxdb/arel/nodes'
-require 'influxdb/arel/quoter'
+require 'influx_db/arel/tree_manager'
+require 'influx_db/arel/select_manager'
+require 'influx_db/arel/delete_manager'
+require 'influx_db/arel/nodes'
+require 'influx_db/arel/quoter'
 
 module Influxdb
   module Arel
