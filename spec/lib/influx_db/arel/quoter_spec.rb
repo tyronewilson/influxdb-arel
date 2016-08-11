@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Influxdb::Arel::Quoter do
+describe InfluxDB::Arel::Quoter do
   describe '#quote' do
     context 'with String' do
       specify{ expect(subject.quote('string')).to eq("'string'") }

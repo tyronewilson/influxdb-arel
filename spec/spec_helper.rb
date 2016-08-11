@@ -6,14 +6,14 @@ end
 require 'bundler'
 Bundler.require(:default, :test)
 
-require './lib/influxdb'
+require './lib/influx_db'
 
 Dir["./spec/support/**/*.rb"].each{|f| require f }
 
 RSpec.configure do |config|
   config.mock_with :rspec
 
-  config.include Influxdb::Arel::RspecHelper
+  config.include InfluxDB::Arel::RspecHelper
 
   config.around :each do |example|
     begin

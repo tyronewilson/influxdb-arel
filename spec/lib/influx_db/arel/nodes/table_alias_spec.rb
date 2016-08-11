@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Influxdb::Arel::Nodes::TableAlias do
+describe InfluxDB::Arel::Nodes::TableAlias do
   let(:described_node){ node(:TableAlias, node(:Table, 'events'), 'alias') }
 
   subject{ described_node }

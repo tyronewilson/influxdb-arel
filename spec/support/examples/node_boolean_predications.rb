@@ -4,7 +4,7 @@ shared_examples_for :node_boolean_predications do |node_sql|
 
     subject{ described_node.and(another_node) }
 
-    specify{ expect(subject).to be_instance_of(Influxdb::Arel::Nodes::And) }
+    specify{ expect(subject).to be_instance_of(InfluxDB::Arel::Nodes::And) }
     specify{ expect(subject.children).to eq([described_node, another_node]) }
     specify{ expect(subject.to_sql).to eq("#{node_sql} AND node") }
   end
@@ -14,7 +14,7 @@ shared_examples_for :node_boolean_predications do |node_sql|
 
     subject{ described_node.or(another_node) }
 
-    specify{ expect(subject).to be_instance_of(Influxdb::Arel::Nodes::Grouping) }
+    specify{ expect(subject).to be_instance_of(InfluxDB::Arel::Nodes::Grouping) }
     specify{ expect(subject.value).to eq(node(:Or, described_node, another_node)) }
     specify{ expect(subject.to_sql).to eq("(#{node_sql} OR node)") }
   end

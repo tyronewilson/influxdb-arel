@@ -17,7 +17,7 @@ require 'influx_db/arel/delete_manager'
 require 'influx_db/arel/nodes'
 require 'influx_db/arel/quoter'
 
-module Influxdb
+module InfluxDB
   module Arel
     extend self
 

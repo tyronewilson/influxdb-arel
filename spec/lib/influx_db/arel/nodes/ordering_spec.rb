@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Influxdb::Arel::Nodes::Ordering do
+describe InfluxDB::Arel::Nodes::Ordering do
   it_should_behave_like :unary_node, :Ordering, 'ORDER VALUE'
 
   describe '#invert' do

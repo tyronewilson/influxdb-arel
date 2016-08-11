@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Influxdb::Arel::Nodes::SqlLiteral do
+describe InfluxDB::Arel::Nodes::SqlLiteral do
   let(:described_node){ node(:SqlLiteral, 'expressions') }
 
   describe '#to_sql' do

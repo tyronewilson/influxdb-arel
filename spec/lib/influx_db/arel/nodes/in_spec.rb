@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Influxdb::Arel::Nodes::In do
+describe InfluxDB::Arel::Nodes::In do
   let(:described_node){ node(:In, sql('left'), [1, 2, 3]) }
 
   it_should_behave_like :node_to_sql, 'left IN (1, 2, 3)'

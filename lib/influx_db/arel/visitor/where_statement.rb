@@ -1,4 +1,4 @@
-module Influxdb
+module InfluxDB
   module Arel
     class Visitor
       module WhereStatement

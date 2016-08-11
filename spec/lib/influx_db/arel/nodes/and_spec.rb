@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Influxdb::Arel::Nodes::And do
+describe InfluxDB::Arel::Nodes::And do
   let(:described_node){ node(:And, ['first', sql('second'), 'third']) }
 
   it_should_behave_like :node_to_sql, "'first' AND second AND 'third'"

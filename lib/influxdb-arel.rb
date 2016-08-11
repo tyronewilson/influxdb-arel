@@ -1,1 +1,1 @@
-require 'influxdb'
+require 'influx_db'

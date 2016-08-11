@@ -1,4 +1,4 @@
 require 'influx_db/arel'
 
-module Influxdb
+module InfluxDB
 end

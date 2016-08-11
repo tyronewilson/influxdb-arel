@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Influxdb::Arel::Nodes::Duration do
+describe InfluxDB::Arel::Nodes::Duration do
   let(:described_node){ node(:Duration, 10, 'h') }
 
   it_should_behave_like :node_to_sql, '10h'

@@ -4,13 +4,13 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'influx_db/arel/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "influx_db-arel"
+  spec.name          = "influxdb-arel"
   spec.version       = InfluxDB::Arel::VERSION
   spec.authors       = ["undr"]
   spec.email         = ["undr@yandex.ru"]
   spec.summary       = %q{InfluxDB SQL AST manager.}
   spec.description   = %q{InfluxDB::Arel is a SQL AST manager for InfluxDB dialect.}
-  spec.homepage      = "https://github.com/undr/influx_db-arel"
+  spec.homepage      = "https://github.com/undr/influxdb-arel"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

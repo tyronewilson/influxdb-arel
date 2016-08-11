@@ -1,4 +1,4 @@
-module Influxdb
+module InfluxDB
   module Arel
     module RspecHelper
       def sql(value)
@@ -6,15 +6,15 @@ module Influxdb
       end
 
       def node(class_name, *args)
-        Influxdb::Arel::Nodes.const_get(class_name).new(*args)
+        InfluxDB::Arel::Nodes.const_get(class_name).new(*args)
       end
 
       def builder(name = nil)
-        Influxdb::Arel::Builder.new(name)
+        InfluxDB::Arel::Builder.new(name)
       end
 
       def visitor
-        Influxdb::Arel::Visitor.new
+        InfluxDB::Arel::Visitor.new
       end
     end
   end

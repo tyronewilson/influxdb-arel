@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Influxdb::Arel::Nodes::Attribute do
+describe InfluxDB::Arel::Nodes::Attribute do
   let(:described_node){ node(:Attribute, 'value') }
 
   it_should_behave_like :unary_node, :Attribute, 'value'

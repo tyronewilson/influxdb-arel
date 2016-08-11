@@ -1,4 +1,4 @@
-module Influxdb
+module InfluxDB
   module Arel
     module Extensions
       module BooleanPredications

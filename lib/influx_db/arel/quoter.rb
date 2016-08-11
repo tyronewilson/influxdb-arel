@@ -1,6 +1,6 @@
 require 'bigdecimal'
 
-module Influxdb
+module InfluxDB
   module Arel
     module Quoter
       extend self

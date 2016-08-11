@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Influxdb::Arel::Quoter::Repository do
-  subject{ Influxdb::Arel::Quoter::Repository.new }
+describe InfluxDB::Arel::Quoter::Repository do
+  subject{ InfluxDB::Arel::Quoter::Repository.new }
 
   before{ subject.add(String){|value| "quoted #{value}" } }
 

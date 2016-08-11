@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Influxdb::Arel do
+describe InfluxDB::Arel do
   describe '.sql' do
     specify{ expect(subject.sql('time(1s)')).to eq(sql('time(1s)')) }
   end

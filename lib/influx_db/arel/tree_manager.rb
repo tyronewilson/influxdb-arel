@@ -1,4 +1,4 @@
-module Influxdb
+module InfluxDB
   module Arel
     class TreeManager
       STRING_OR_SYMBOL_CLASS = [Symbol, String]

@@ -1,6 +1,6 @@
-# Influxdb::Arel
+# InfluxDB::Arel
 
-Influxdb::Arel is a SQL AST manager for Influxdb dialect. It simplifies the generation of complex SQL queries.
+InfluxDB::Arel is a SQL AST manager for InfluxDB dialect. It simplifies the generation of complex SQL queries.
 
 [![Build Status](https://travis-ci.org/undr/influxdb-arel.svg?branch=master)](https://travis-ci.org/undr/influxdb-arel)
 [![Code Climate](https://codeclimate.com/github/undr/influxdb-arel/badges/gpa.svg)](https://codeclimate.com/github/undr/influxdb-arel)
@@ -34,7 +34,7 @@ $ gem install influxdb-arel
 At start you should create a builder:
 
 ```ruby
-builder = Influxdb::Arel::Builder.new(:events)
+builder = InfluxDB::Arel::Builder.new(:events)
 builder.select.to_sql
 # => SELECT * FROM events
 ```
@@ -42,7 +42,7 @@ builder.select.to_sql
 You can set default table name for the builder. Possible to use both strings and symbols:
 
 ```ruby
-Influxdb::Arel::Builder.new('events') == Influxdb::Arel::Builder.new(:events)
+InfluxDB::Arel::Builder.new('events') == InfluxDB::Arel::Builder.new(:events)
 # => true
 ```
 
@@ -52,7 +52,7 @@ If you want to use convenient shortcuts, such as `10.h.ago` or `1.w` you should 
 require 'influxdb/arel/core_extensions'
 
 1.h
-# => #<Influxdb::Arel::Nodes::Duration:0x00000102143a68 @left=1, @right="h">
+# => #<InfluxDB::Arel::Nodes::Duration:0x00000102143a68 @left=1, @right="h">
 
 1.h.to_sql
 # => "1h"
@@ -88,7 +88,7 @@ For example:
 - All undefined methods will be interpreted as attributes:
 
 ```ruby
-builder.where{ pp name.is_a?(Influxdb::Arel::Nodes::Attribute) }
+builder.where{ pp name.is_a?(InfluxDB::Arel::Nodes::Attribute) }
 # true
 # => ...
 builder.where{ name =~ /undr/ }.to_sql
@@ -103,9 +103,9 @@ builder.where{ pp a(:name) == name }
 # => ...
 ```
 
-- Method `time` returns `Influxdb::Arel::Nodes::Time` object. (It will be available only in `GROUP` context)
+- Method `time` returns `InfluxDB::Arel::Nodes::Time` object. (It will be available only in `GROUP` context)
 
-- Method `now` returns `Influxdb::Arel::Nodes::Now` object. (It will be available only in `WHERE` context)
+- Method `now` returns `InfluxDB::Arel::Nodes::Now` object. (It will be available only in `WHERE` context)
 
 
 #### In `FROM`, `JOIN` and `MERGE` contexts
@@ -113,7 +113,7 @@ builder.where{ pp a(:name) == name }
 - All undefined methods will be interpreted as tables:
 
 ```ruby
-builder.select{ pp events.is_a?(Influxdb::Arel::Nodes::Table) }
+builder.select{ pp events.is_a?(InfluxDB::Arel::Nodes::Table) }
 # true
 # => ...
 builder.from{ events }.to_sql
@@ -155,7 +155,7 @@ builder.from{ o{ regexp } }.to_sql
 You can specify attributes or expressions for `SELECT` clause using `select` method.
 
 ```ruby
-builder = Influxdb::Arel::Builder.new(:cpu_load)
+builder = InfluxDB::Arel::Builder.new(:cpu_load)
 builder.to_sql
 # => SELECT * FROM cpu_load
 
@@ -237,7 +237,7 @@ You can join two tables using `join` method.
 It will join two first tables from tables list if method is called without argument
 
 ```ruby
-builder = Influxdb::Arel::Builder.new(:table)
+builder = InfluxDB::Arel::Builder.new(:table)
 builder.from(:table1, :table2).join.to_sql
 # => SELECT * FROM table1 INNER JOIN table2
 builder.from{ [table1.as(:alias1), table2.as(:alias2)] }.join.to_sql
@@ -286,7 +286,7 @@ You can merge two tables using `merge` method.
 It will merge two first tables from tables list if method is called without argument
 
 ```ruby
-builder = Influxdb::Arel::Builder.new(:table)
+builder = InfluxDB::Arel::Builder.new(:table)
 builder.from(:table1, :table2).merge.to_sql
 # => SELECT * FROM table1 MERGE table2
 builder.from{ [table1.as(:alias1), table2.as(:alias2)] }.merge.to_sql
@@ -333,7 +333,7 @@ builder.merge(:table1).merge(:table2).to_sql
 Grouping of results by specified attributes or expressions, such as `time(10m)`:
 
 ```ruby
-builder = Influxdb::Arel::Builder.new(:table)
+builder = InfluxDB::Arel::Builder.new(:table)
 builder.group{ [time(10.m), host] }.to_sql
 # => SELECT * FROM table GROUP BY time(10m), host
 ```
@@ -366,7 +366,7 @@ Possible values:
 * `'desc'`- Results will be sorted by descending order.
 
 ```ruby
-builder = Influxdb::Arel::Builder.new(:table)
+builder = InfluxDB::Arel::Builder.new(:table)
 builder.order(:desc).to_sql
 builder.order('desc').to_sql
 # => SELECT * FROM table ORDER DESC
@@ -406,7 +406,7 @@ builder.asc.desc.to_sql
 You can specify conditions for query using `where` method
 
 ```ruby
-builder = Influxdb::Arel::Builder.new(:table)
+builder = InfluxDB::Arel::Builder.new(:table)
 builder.where(name: 'Undr').to_sql
 # => SELECT * FROM table WHERE name = 'Undr'
 ```
@@ -430,7 +430,7 @@ builder.where(name: 'Undr').where!{ time.lt(10.h.ago) }.to_sql
 You can set a limit for a result set
 
 ```ruby
-builder = Influxdb::Arel::Builder.new(:cpu_load)
+builder = InfluxDB::Arel::Builder.new(:cpu_load)
 builder.limit(100).to_sql
 # => SELECT * FROM cpu_load LIMIT 100
 ```

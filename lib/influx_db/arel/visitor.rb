@@ -1,4 +1,4 @@
-module Influxdb
+module InfluxDB
   module Arel
     class Visitor
       WHERE = ' WHERE '
@@ -26,47 +26,47 @@ module Influxdb
         retry
       end
 
-      def visit_Influxdb_Arel_Nodes_SelectStatement(object)
+      def visit_InfluxDB_Arel_Nodes_SelectStatement(object)
         SelectStatement.new(self).visit(object)
       end
 
-      def visit_Influxdb_Arel_Nodes_DeleteStatement(object)
+      def visit_InfluxDB_Arel_Nodes_DeleteStatement(object)
         DeleteStatement.new(self).visit(object)
       end
 
-      def visit_Influxdb_Arel_Nodes_Table(object)
+      def visit_InfluxDB_Arel_Nodes_Table(object)
         quote_table_name(object.name)
       end
 
-      def visit_Influxdb_Arel_Nodes_Join(object)
+      def visit_InfluxDB_Arel_Nodes_Join(object)
         visit_predication(object, 'INNER JOIN')
       end
 
-      def visit_Influxdb_Arel_Nodes_Merge(object)
+      def visit_InfluxDB_Arel_Nodes_Merge(object)
         visit_predication(object, 'MERGE')
       end
 
-      def visit_Influxdb_Arel_Nodes_Limit(object)
+      def visit_InfluxDB_Arel_Nodes_Limit(object)
         "LIMIT #{visit(object.expr)}"
       end
 
-      def visit_Influxdb_Arel_Nodes_Ordering(object)
+      def visit_InfluxDB_Arel_Nodes_Ordering(object)
         "ORDER #{object.value.upcase}"
       end
 
-      def visit_Influxdb_Arel_Nodes_Into(object)
+      def visit_InfluxDB_Arel_Nodes_Into(object)
         "INTO #{visit(object.expr)}"
       end
 
-      def visit_Influxdb_Arel_Nodes_Grouping(object)
+      def visit_InfluxDB_Arel_Nodes_Grouping(object)
         "(#{visit(object.expr)})"
       end
 
-      def visit_Influxdb_Arel_Nodes_Group(object)
+      def visit_InfluxDB_Arel_Nodes_Group(object)
         visit(object.expr)
       end
 
-      def visit_Influxdb_Arel_Nodes_TableAlias(object)
+      def visit_InfluxDB_Arel_Nodes_TableAlias(object)
         "#{visit(object.relation)} AS #{quote_table_name(object.name)}"
       end
 
@@ -76,41 +76,41 @@ module Influxdb
         "#{function_clause}(#{expressions})"
       end
 
-      alias :visit_Influxdb_Arel_Nodes_Count :function
-      alias :visit_Influxdb_Arel_Nodes_Sum :function
-      alias :visit_Influxdb_Arel_Nodes_Max :function
-      alias :visit_Influxdb_Arel_Nodes_Min :function
-      alias :visit_Influxdb_Arel_Nodes_Mean :function
-      alias :visit_Influxdb_Arel_Nodes_Mode :function
-      alias :visit_Influxdb_Arel_Nodes_Median :function
-      alias :visit_Influxdb_Arel_Nodes_Distinct :function
-      alias :visit_Influxdb_Arel_Nodes_Percentile :function
-      alias :visit_Influxdb_Arel_Nodes_Histogram :function
-      alias :visit_Influxdb_Arel_Nodes_Derivative :function
-      alias :visit_Influxdb_Arel_Nodes_Stddev :function
-      alias :visit_Influxdb_Arel_Nodes_First :function
-      alias :visit_Influxdb_Arel_Nodes_Last :function
-      alias :visit_Influxdb_Arel_Nodes_Difference :function
-      alias :visit_Influxdb_Arel_Nodes_Top :function
-      alias :visit_Influxdb_Arel_Nodes_Bottom :function
+      alias :visit_InfluxDB_Arel_Nodes_Count :function
+      alias :visit_InfluxDB_Arel_Nodes_Sum :function
+      alias :visit_InfluxDB_Arel_Nodes_Max :function
+      alias :visit_InfluxDB_Arel_Nodes_Min :function
+      alias :visit_InfluxDB_Arel_Nodes_Mean :function
+      alias :visit_InfluxDB_Arel_Nodes_Mode :function
+      alias :visit_InfluxDB_Arel_Nodes_Median :function
+      alias :visit_InfluxDB_Arel_Nodes_Distinct :function
+      alias :visit_InfluxDB_Arel_Nodes_Percentile :function
+      alias :visit_InfluxDB_Arel_Nodes_Histogram :function
+      alias :visit_InfluxDB_Arel_Nodes_Derivative :function
+      alias :visit_InfluxDB_Arel_Nodes_Stddev :function
+      alias :visit_InfluxDB_Arel_Nodes_First :function
+      alias :visit_InfluxDB_Arel_Nodes_Last :function
+      alias :visit_InfluxDB_Arel_Nodes_Difference :function
+      alias :visit_InfluxDB_Arel_Nodes_Top :function
+      alias :visit_InfluxDB_Arel_Nodes_Bottom :function
 
-      def visit_Influxdb_Arel_Nodes_Fill(object)
+      def visit_InfluxDB_Arel_Nodes_Fill(object)
         "fill(#{visit(object.expr)})"
       end
 
-      def visit_Influxdb_Arel_Nodes_Time(object)
+      def visit_InfluxDB_Arel_Nodes_Time(object)
         "time(#{visit(object.expr)})"
       end
 
-      def visit_Influxdb_Arel_Nodes_Duration(object)
+      def visit_InfluxDB_Arel_Nodes_Duration(object)
         "#{object.value}#{object.suffix}"
       end
 
-      def visit_Influxdb_Arel_Nodes_Now(object)
+      def visit_InfluxDB_Arel_Nodes_Now(object)
         "now()"
       end
 
-      def visit_Influxdb_Arel_Nodes_In(object)
+      def visit_InfluxDB_Arel_Nodes_In(object)
         if Array === object.right && object.right.empty?
           '1 = 0'
         else
@@ -118,7 +118,7 @@ module Influxdb
         end
       end
 
-      def visit_Influxdb_Arel_Nodes_GreaterThanOrEqual(object)
+      def visit_InfluxDB_Arel_Nodes_GreaterThanOrEqual(object)
         if object.left.is_a?(Nodes::Attribute) && object.left.time?
           right = object.right - 1
           operator = '>'
@@ -129,11 +129,11 @@ module Influxdb
         visit_predication(object, operator, right)
       end
 
-      def visit_Influxdb_Arel_Nodes_GreaterThan(object)
+      def visit_InfluxDB_Arel_Nodes_GreaterThan(object)
         visit_predication(object, '>')
       end
 
-      def visit_Influxdb_Arel_Nodes_LessThanOrEqual(object)
+      def visit_InfluxDB_Arel_Nodes_LessThanOrEqual(object)
         if object.left.is_a?(Nodes::Attribute) && object.left.time?
           right = object.right + 1
           operator = '<'
@@ -144,39 +144,39 @@ module Influxdb
         visit_predication(object, operator, right)
       end
 
-      def visit_Influxdb_Arel_Nodes_LessThan(object)
+      def visit_InfluxDB_Arel_Nodes_LessThan(object)
         visit_predication(object, '<')
       end
 
-      def visit_Influxdb_Arel_Nodes_NotEqual(object)
+      def visit_InfluxDB_Arel_Nodes_NotEqual(object)
         visit_predication(object, '<>')
       end
 
-      def visit_Influxdb_Arel_Nodes_Equality(object)
+      def visit_InfluxDB_Arel_Nodes_Equality(object)
         visit_predication(object, '=')
       end
 
-      def visit_Influxdb_Arel_Nodes_Matches(object)
+      def visit_InfluxDB_Arel_Nodes_Matches(object)
         visit_predication(object, '=~')
       end
 
-      def visit_Influxdb_Arel_Nodes_DoesNotMatch(object)
+      def visit_InfluxDB_Arel_Nodes_DoesNotMatch(object)
         visit_predication(object, '!~')
       end
 
-      def visit_Influxdb_Arel_Nodes_And(object)
+      def visit_InfluxDB_Arel_Nodes_And(object)
         object.children.map{|node| visit(node) }.join(AND)
       end
 
-      def visit_Influxdb_Arel_Nodes_Or(object)
+      def visit_InfluxDB_Arel_Nodes_Or(object)
         [visit(object.left), visit(object.right)].join(OR)
       end
 
-      def visit_Influxdb_Arel_Nodes_As(object)
+      def visit_InfluxDB_Arel_Nodes_As(object)
         visit_predication(object, 'AS')
       end
 
-      def visit_Influxdb_Arel_Nodes_Attribute(object)
+      def visit_InfluxDB_Arel_Nodes_Attribute(object)
         # if object.relation.table_alias
         #   "#{quote_table_name(object.relation.table_alias)}.#{quote_column_name(object.name)}"
         # else
@@ -190,7 +190,7 @@ module Influxdb
         object
       end
 
-      alias :visit_Influxdb_Arel_Nodes_SqlLiteral :literal
+      alias :visit_InfluxDB_Arel_Nodes_SqlLiteral :literal
       alias :visit_Bignum :literal
       alias :visit_Fixnum :literal
 
@@ -214,14 +214,14 @@ module Influxdb
       alias :visit_TrueClass :quoted
       alias :visit_Regexp :quoted
 
-      def visit_Influxdb_Arel_Nodes_InfixOperation(object)
+      def visit_InfluxDB_Arel_Nodes_InfixOperation(object)
         visit_predication(object, object.operator)
       end
 
-      alias :visit_Influxdb_Arel_Nodes_Addition :visit_Influxdb_Arel_Nodes_InfixOperation
-      alias :visit_Influxdb_Arel_Nodes_Subtraction :visit_Influxdb_Arel_Nodes_InfixOperation
-      alias :visit_Influxdb_Arel_Nodes_Multiplication :visit_Influxdb_Arel_Nodes_InfixOperation
-      alias :visit_Influxdb_Arel_Nodes_Division :visit_Influxdb_Arel_Nodes_InfixOperation
+      alias :visit_InfluxDB_Arel_Nodes_Addition :visit_InfluxDB_Arel_Nodes_InfixOperation
+      alias :visit_InfluxDB_Arel_Nodes_Subtraction :visit_InfluxDB_Arel_Nodes_InfixOperation
+      alias :visit_InfluxDB_Arel_Nodes_Multiplication :visit_InfluxDB_Arel_Nodes_InfixOperation
+      alias :visit_InfluxDB_Arel_Nodes_Division :visit_InfluxDB_Arel_Nodes_InfixOperation
 
       def visit_Array(object)
         object.map{|node| visit(node) }.join(COMMA)

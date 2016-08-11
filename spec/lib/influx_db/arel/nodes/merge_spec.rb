@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Influxdb::Arel::Nodes::Merge do
+describe InfluxDB::Arel::Nodes::Merge do
   describe 'initialization' do
     let(:described_node){ node(:Merge, left, right) }
 
@@ -8,16 +8,16 @@ describe Influxdb::Arel::Nodes::Merge do
       let(:left){ node(:Table, 'left') }
       let(:right){ node(:Table, 'right') }
 
-      specify{ expect(described_node.left).to be_instance_of(Influxdb::Arel::Nodes::Table) }
-      specify{ expect(described_node.right).to be_instance_of(Influxdb::Arel::Nodes::Table) }
+      specify{ expect(described_node.left).to be_instance_of(InfluxDB::Arel::Nodes::Table) }
+      specify{ expect(described_node.right).to be_instance_of(InfluxDB::Arel::Nodes::Table) }
     end
 
     context 'with aliases' do
       let(:left){ node(:Table, 'left').as(:alias1) }
       let(:right){ node(:Table, 'right').as(:alias2) }
 
-      specify{ expect(described_node.left).to be_instance_of(Influxdb::Arel::Nodes::Table) }
-      specify{ expect(described_node.right).to be_instance_of(Influxdb::Arel::Nodes::Table) }
+      specify{ expect(described_node.left).to be_instance_of(InfluxDB::Arel::Nodes::Table) }
+      specify{ expect(described_node.right).to be_instance_of(InfluxDB::Arel::Nodes::Table) }
     end
   end
 

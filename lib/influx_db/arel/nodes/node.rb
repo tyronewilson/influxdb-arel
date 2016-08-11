@@ -1,4 +1,4 @@
-module Influxdb
+module InfluxDB
   module Arel
     module Nodes
       class Node
@@ -19,7 +19,7 @@ module Influxdb
         def extend(*extensions)
           extensions.each do |extension|
             if module_name = EXTENSIONS[extension]
-              singleton_class.send(:include, Influxdb::Arel::Extensions.const_get(module_name))
+              singleton_class.send(:include, InfluxDB::Arel::Extensions.const_get(module_name))
             end
           end
 

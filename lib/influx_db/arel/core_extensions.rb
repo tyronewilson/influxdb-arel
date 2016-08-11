@@ -1,26 +1,26 @@
 class Integer
   def u
-    Influxdb::Arel::Nodes::Duration.new(self, 'u')
+    InfluxDB::Arel::Nodes::Duration.new(self, 'u')
   end
 
   def s
-    Influxdb::Arel::Nodes::Duration.new(self, 's')
+    InfluxDB::Arel::Nodes::Duration.new(self, 's')
   end
 
   def m
-    Influxdb::Arel::Nodes::Duration.new(self, 'm')
+    InfluxDB::Arel::Nodes::Duration.new(self, 'm')
   end
 
   def h
-    Influxdb::Arel::Nodes::Duration.new(self, 'h')
+    InfluxDB::Arel::Nodes::Duration.new(self, 'h')
   end
 
   def d
-    Influxdb::Arel::Nodes::Duration.new(self, 'd')
+    InfluxDB::Arel::Nodes::Duration.new(self, 'd')
   end
 
   def w
-    Influxdb::Arel::Nodes::Duration.new(self, 'w')
+    InfluxDB::Arel::Nodes::Duration.new(self, 'w')
   end
 end
 
